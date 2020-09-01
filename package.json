@@ -1,0 +1,22 @@
+{
+  "name": "myhellobotapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LouiMinister/MyHelloBotAPI.git"
+  },
+  "author": "DongJaeLee",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LouiMinister/MyHelloBotAPI/issues"
+  },
+  "homepage": "https://github.com/LouiMinister/MyHelloBotAPI#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
