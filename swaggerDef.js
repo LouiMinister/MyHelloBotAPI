@@ -1,6 +1,6 @@
 import path from 'path';
 
-const SwaggerDefinition = {
+const swaggerDefinition = {
     info: {
         title: 'MyHelloBotApiDoc',
         version: '1.0.0',
@@ -20,20 +20,9 @@ const SwaggerDefinition = {
     schemes: ['http']
 };
 
-
-const swaggerDefinition2 = {
-    info: { // API informations (required)
-      title: 'Hello World', // Title (required)
-      version: '1.0.0', // Version (required)
-      description: 'A sample API', // Description (optional)
-    },
-    host: 'localhost:3000', // Host (optional)
-    basePath: '/', // Base path (optional)
-  }
-
 export default {
-    SwaggerDefinition: swaggerDefinition2,
-    apis: ['./app.js']
+    swaggerDefinition: swaggerDefinition,
+    apis: [path.join(__dirname + '/app.js')],
     //apis:[path.join(__dirname + '/app.js')]
 };
 
