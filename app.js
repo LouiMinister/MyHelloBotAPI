@@ -52,7 +52,41 @@ app.get("/isApiWork", (req,res)=>{
 });
 
 
+
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerJSDoc(swaggerOptions)));
+
+
+const mysql = require('mysql');
+// Connection 객체 생성 
+const connection = mysql.createConnection({
+  host: 'myhellobot.clt3woxx18bh.ap-northeast-2.rds.amazonaws.com',
+  port: 3306,
+  user: 'admin',   
+  password: 'masterpassword',
+  database: 'myhellobot'  
+});  
+// Connect
+connection.connect(function (err) {   
+  if (err) {     
+    console.error('mysql connection error');     
+    console.error(err);     
+    throw err;   
+  } 
+});
+
+app.get('/dbcheck', function (req, res) {
+
+    var query = connection.query(
+        `SELECT * FROM chatbot_friends`, function (err, rows, field) {
+      if (err) {
+        console.error(err);
+        throw err;
+      }
+      res.status(200).json({id : rows[0].id, name : rows[0].name});
+      console.log("rows");
+    });
+  });
+
 
 app.listen(3000, ()=>{
     console.log("App started on port 3000");
