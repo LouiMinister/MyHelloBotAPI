@@ -1,0 +1,7 @@
+{
+    "host": "myhellobot.clt3woxx18bh.ap-northeast-2.rds.amazonaws.com",
+    "port": 3306,
+    "user": "admin",   
+    "password": "masterpassword",
+    "database": "myhellobot"  
+}
