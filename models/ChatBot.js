@@ -15,11 +15,11 @@ class ChatBot {
     }
     
     async getFirstScript(skillId){
-        const rawQuery = `SELECT * FROM chatbot_scripts WHERE chatbot_skill_id = ${skillId} and depth = 0`;
+        const rawQuery = `SELECT * FROM chatbot_scripts WHERE chatbot_skill_id = ${skillId} AND depth = 0 LIMIT 1`;
         const promise = new Promise( (resolve, reject) => {
             this.connection.query( rawQuery, (err, rows, field) => {
                 if (err) { reject(err); }
-                resolve(rows);
+                resolve(rows[0]);
             });
         }).catch( (err) => {
             throw err;
