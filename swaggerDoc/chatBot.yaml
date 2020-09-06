@@ -6,7 +6,7 @@ schemes:
 - "http"
 
 paths:
-  /chatbot/skills/{skillId}/firstscript:
+  /v1/api/chatbot/skills/{skillId}/firstscript:
     get:
       tags:
         - "chatbot"
@@ -26,7 +26,7 @@ paths:
             $ref: "#/definitions/Script"
         "404":
           description: "Script not found"
-  /chatbot/script/{scriptId}:
+  /v1/api/chatbot/script/{scriptId}:
    get:
     tags:
       - "chatbot"
@@ -46,7 +46,7 @@ paths:
           $ref: "#/definitions/Script"
       "404":
         description: "Script not found"
-  /chatbot/script/{scriptId}/reply-scripts:
+  /v1/api/chatbot/script/{scriptId}/reply-scripts:
     get:
       tags:
         - "chatbot"
