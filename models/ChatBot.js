@@ -52,6 +52,19 @@ class ChatBot {
         });
         return promise;
     }
+
+    async addSkillReview(user_id, chatbot_skill_id, rating_id, message){
+        const rawQuery = `INSERT INTO skill_reviews (user_id, chatbot_skill_id, rating_code, message) VALUES (${user_id}, ${chatbot_skill_id}, ${rating_id}, "${message}")`;
+        const promise = new Promise( (resolve, reject) => {
+            this.connection.query( rawQuery, (err, rows, field) => {
+                if (err) { reject(err); }
+                resolve();
+            });
+        }).catch( (err) => {
+            throw err;
+        });
+        return promise;
+    }
 }
 
 export default ChatBot;
