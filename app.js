@@ -2,14 +2,12 @@ import express from "express";
 import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUI from 'swagger-ui-express';
 import swaggerOptions from './swaggerDef';
-
-import chatBotRouter from './routes/chatBotRouter';
+import v1Router from './routes/version/v1Router';
 
 const app = express();
 
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerJSDoc(swaggerOptions)));
-app.use('/chatbot', chatBotRouter);
-
+app.use('/v1/api', v1Router );
 
 app.use((req, res) => {
     res.status(404).send("Sorry Not Found");
