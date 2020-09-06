@@ -11,3 +11,25 @@ test("ChatBotService의 getFirstScript 메서드 테스트", async () => {
         , "depth":0}
     ));
 });
+
+test("getReplyScripts test", async () => {
+    const result = await chatBotService.getReplyScripts(1);
+    expect(JSON.stringify(result)).toBe(JSON.stringify(
+        [
+            {
+                "id": 1, 
+                "type_code" : "choc", 
+                "contents" : "응 볼래",
+                "prev_chatbot_script_id" : 1,
+                "next_chatbot_script_id" : 2 
+            },
+            {
+                "id": 2, 
+                "type_code" : "choc", 
+                "contents" : "아니 나중에",
+                "prev_chatbot_script_id" : 1,
+                "next_chatbot_script_id" : 6 
+            }
+        ]
+    ));
+});
