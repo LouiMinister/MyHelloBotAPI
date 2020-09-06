@@ -11,8 +11,11 @@ class ChatBotService {
     }
 
     async getReplyScripts(scriptId){
-        const replyScript = await this.chatBot.getReplyScripts(scriptId).catch((err)=>{throw err;});
-        return replyScript;
+        const replyScripts = await this.chatBot.getReplyScripts(scriptId).catch((err)=>{throw err;});
+        if (replyScripts.length === 0) {
+            return undefined;
+        }
+        return replyScripts;
     }
 }
 
