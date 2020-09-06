@@ -26,6 +26,19 @@ class ChatBot {
         });
         return promise;
     }
+
+    async getReplyScripts(scriptId){
+        const rawQuery = `SELECT * FROM chatbot_reply_scripts WHERE prev_chatbot_script_id = ${scriptId}`;
+        const promise = new Promise( (resolve, reject) => {
+            this.connection.query( rawQuery, (err, rows, field) => {
+                if (err) { reject(err); }
+                resolve(rows);
+            });
+        }).catch( (err) => {
+            throw err;
+        });
+        return promise;
+    }
 }
 
 export default ChatBot;
