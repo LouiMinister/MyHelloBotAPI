@@ -6,6 +6,7 @@ import v1Router from './routes/version/v1Router';
 
 const app = express();
 
+app.use(express.json());
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerJSDoc(swaggerOptions)));
 app.use('/v1/api', v1Router );
 
