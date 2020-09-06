@@ -1,9 +1,9 @@
-import ChatBotService from '../../service/ChatBotService'
+import ChatBotService from '../../services/ChatBotService'
 
 const chatBotService = new ChatBotService();
 
-test("ChatBotService의 getSkillStartingScript 메서드 테스트", async () => {
-    const result = await chatBotService.getSkillStartingScript(1);
+test("ChatBotService의 getFirstScript 메서드 테스트", async () => {
+    const result = await chatBotService.getFirstScript(1);
     expect(JSON.stringify(result)).toBe(JSON.stringify([
         {"id": 1, 
         "chatbot_skill_id" : 1, 

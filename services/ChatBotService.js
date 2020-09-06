@@ -5,8 +5,8 @@ class ChatBotService {
         this.chatBot = new ChatBot();
     }
     
-    async getSkillStartingScript(skillId){
-        const skillStringScript = await this.chatBot.getSkillStartingScript(skillId);
+    async getFirstScript(skillId){
+        const skillStringScript = await this.chatBot.getFirstScript(skillId);
         return skillStringScript;
     }
 }

@@ -3,7 +3,7 @@ import ChatBot from '../../models/ChatBot'
 const chatBot = new ChatBot();
 
 test(" ", async () => {
-    const result = await chatBot.getSkillStartingScript(1);
+    const result = await chatBot.getFirstScript(1);
     expect(JSON.stringify(result)).toBe(JSON.stringify([
         {"id": 1, 
         "chatbot_skill_id" : 1, 
