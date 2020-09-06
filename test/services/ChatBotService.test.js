@@ -47,12 +47,12 @@ test("getReplyScripts test", async () => {
 });
 
 test("addSkillReview test", async () => {
-    const result = await chatBotService.addSkillReview(JSON.stringify(
+    const result = await chatBotService.addSkillReview(
         {
             user_id :2, 
             chatbot_skill_id:1,
             rating_code: 1,
             message: "좋아요44444"
         }
-    ));
+    );
 });

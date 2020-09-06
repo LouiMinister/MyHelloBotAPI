@@ -27,8 +27,7 @@ class ChatBotService {
     }
 
     async addSkillReview(skillReview){
-        const skillReviewObj = JSON.parse(skillReview);
-        const {user_id, chatbot_skill_id, rating_code, message} = skillReviewObj;
+        const {user_id, chatbot_skill_id, rating_code, message} = skillReview;
         const replyScripts = await this.chatBot.addSkillReview(user_id, chatbot_skill_id, rating_code, message)
             .catch((err)=>{throw err;});
         return replyScripts;
