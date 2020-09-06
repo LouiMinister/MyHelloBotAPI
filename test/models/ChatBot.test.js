@@ -14,6 +14,18 @@ test("getFirstScript test", async () => {
     ));
 });
 
+test("getScript test", async () => {
+    const result = await chatBot.getScript(2);
+    expect(JSON.stringify(result)).toBe(JSON.stringify(
+        {
+            "id": 2, 
+            "chatbot_skill_id" : 1, 
+            "contents": "좋아. 우선...\n::param::{{username}} 너랑 썸인지 뭔지를 타고 있는 그 분을 내가 뭐라고 부를까?",
+            "depth":1
+        }
+    ));
+});
+
 test("getReplyScripts test", async () => {
     const result = await chatBot.getReplyScripts(1);
     expect(JSON.stringify(result)).toBe(JSON.stringify(
