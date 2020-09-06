@@ -16,4 +16,16 @@ router.get(/^\/skills\/(\d+)\/firstscript$/, async (req, res, next) => {
     }
 });
 
+router.get(/^\/script\/(\d+)\/reply-scripts$/, async (req, res, next) => {
+    const skillId = parseInt(req.params[0], 10);
+    const firstScript = await chatBotService.getReplyScripts(skillId)
+        .catch((err)=>{next(err)});
+
+    if (firstScript != undefined){
+        res.status(200).json(firstScript);
+    } else if (firstScript == undefined){
+        next();
+    }
+});
+
 export default router;
