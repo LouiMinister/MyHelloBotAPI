@@ -10,6 +10,11 @@ class ChatBotService {
         return skillStaringScript;
     }
 
+    async getScript(scriptId){
+        const skillStaringScript = await this.chatBot.getScript(scriptId).catch((err)=>{throw err;});
+        return skillStaringScript;
+    }
+
     async getReplyScripts(scriptId){
         const replyScripts = await this.chatBot.getReplyScripts(scriptId).catch((err)=>{throw err;});
         if (replyScripts.length === 0) {
