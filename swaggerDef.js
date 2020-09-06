@@ -22,8 +22,7 @@ const swaggerDefinition = {
 
 export default {
     swaggerDefinition: swaggerDefinition,
-    apis: [path.join(__dirname + '/app.js')],
-    //apis:[path.join(__dirname + '/app.js')]
+    apis: [path.join(__dirname + '/swaggerDoc/*.yaml')]
 };
 
 
