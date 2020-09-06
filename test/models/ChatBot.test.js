@@ -48,3 +48,6 @@ test("getReplyScripts test", async () => {
     ));
 });
 
+test("addSkillReview test", async () => {
+    const result = await chatBot.addSkillReview(2, 1, 1, "좋아요1131231");
+});

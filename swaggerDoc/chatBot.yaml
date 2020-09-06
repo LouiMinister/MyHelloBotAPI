@@ -6,7 +6,7 @@ schemes:
 - "http"
 
 paths:
-  /v1/api/chatbot/skills/{skillId}/firstscript:
+  /v1/api/chatbot/skills/{skillId}/first-script:
     get:
       tags:
         - "chatbot"
@@ -26,6 +26,30 @@ paths:
             $ref: "#/definitions/Script"
         "404":
           description: "Script not found"
+  /v1/api/chatbot/skills/{skillId}/reviews:
+    post:
+      tags:
+        - "chatbot"
+      summary: "스킬에 대한 사용자 평가 추가"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "skillId"
+        in: "path"
+        description: "스킬의 고유 key값"
+        required: true
+        type: "integer"
+      - in: "body"
+        name: "body"
+        description: "Skill Review object"
+        required: true
+        schema:
+          $ref: "#/definitions/SkillReview"
+      responses:
+        "200":
+          description: "추가 성공"
+        "404":
+          description: "User or Skill not found"
   /v1/api/chatbot/script/{scriptId}:
    get:
     tags:
@@ -100,3 +124,12 @@ definitions:
         type: "string"
       prev_chatbot_script_id:
         type: "integer"
+  SkillReview:
+    type: "object"
+    properties:
+      user_id:
+        type: "integer"
+      rating_code:
+        type: "integer"
+      message:
+        type: "string"
