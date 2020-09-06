@@ -18,7 +18,8 @@
   },
   "homepage": "https://github.com/LouiMinister/MyHelloBotAPI#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mysql": "^2.18.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.11.5",

@@ -3,6 +3,8 @@ import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUI from 'swagger-ui-express';
 import swaggerOptions from './swaggerDef';
 
+import chatBotRouter from './routes/chatBotRouter';
+
 const app = express();
 
 /**
@@ -45,15 +47,17 @@ const app = express();
  *                 $ref: '#/definitions/Todo'
  */
 
-
-app.get("/isApiWork", (req,res)=>{
-    const result = "Api server is working";
-    res.json({ result: result });
-});
-
-
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerJSDoc(swaggerOptions)));
+app.use('/chatbot', chatBotRouter);
 
+
+app.use((req, res) => {
+    res.status(404).send("Sorry Not Found");
+    console.log("404 ERROR");
+});
+app.use( (error, req, res, next) => {
+    console.log(error);
+});
 app.listen(3000, ()=>{
     console.log("App started on port 3000");
 });
