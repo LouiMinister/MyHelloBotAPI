@@ -21,7 +21,7 @@ class ChatBot {
             });
         }).catch( (err) => {
             throw err;
-        }).then((result)=>{
+        }).then( (result) => {
             connection.release();
             return result;
         });
@@ -39,7 +39,9 @@ class ChatBot {
                 if (err) { reject(err); }
                 resolve(rows[0]);
             });
-        }).then((result)=>{
+        }).catch( (err) => {
+            throw err;
+        }).then( (result) => {
             connection.release();
             return result;
         });
@@ -57,7 +59,9 @@ class ChatBot {
                 if (err) { reject(err); }
                 resolve(rows);
             });
-        }).then((result)=>{
+        }).catch( (err) => {
+            throw err;
+        }).then( (result) => {
             connection.release();
             return result;
         });
@@ -75,7 +79,9 @@ class ChatBot {
                 if (err) { reject(err); }
                 resolve();
             });
-        }).then((result)=>{
+        }).catch( (err) => {
+            throw err;
+        }).then( (result) => {
             connection.release();
             return result;
         });
