@@ -3,5 +3,6 @@
     "port": 3306,
     "user": "admin",   
     "password": "masterpassword",
-    "database": "myhellobot"  
+    "database": "myhellobot",
+    "connectionLimit": 2  
 }
