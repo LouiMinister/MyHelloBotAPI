@@ -1,0 +1,135 @@
+tags:
+- name: "chatbot"
+  description: "챗봇과의 대화 관련"
+  
+schemes:
+- "http"
+
+paths:
+  /v1/api/chatbot/skills/{skillId}/first-script:
+    get:
+      tags:
+        - "chatbot"
+      summary: "스킬 발동 시 챗봇의 첫 대본 조회"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "skillId"
+        in: "path"
+        description: "스킬의 고유 key값"
+        required: true
+        type: "integer"
+      responses:
+        "200":
+          description: "조회 성공"
+          schema: 
+            $ref: "#/definitions/Script"
+        "404":
+          description: "Script not found"
+  /v1/api/chatbot/skills/{skillId}/reviews:
+    post:
+      tags:
+        - "chatbot"
+      summary: "스킬에 대한 사용자 평가 추가"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "skillId"
+        in: "path"
+        description: "스킬의 고유 key값"
+        required: true
+        type: "integer"
+      - in: "body"
+        name: "body"
+        description: "Skill Review object"
+        required: true
+        schema:
+          $ref: "#/definitions/SkillReview"
+      responses:
+        "200":
+          description: "추가 성공"
+        "404":
+          description: "User or Skill not found"
+  /v1/api/chatbot/script/{scriptId}:
+   get:
+    tags:
+      - "chatbot"
+    summary: "script id로 챗봇의 대본 조회"
+    produces: 
+    - "application/json"
+    parameters:
+    - name : "scriptId"
+      in: "path"
+      description: "대본의 고유 key값"
+      required: true
+      type: "integer"
+    responses:
+      "200":
+        description: "조회 성공"
+        schema: 
+          $ref: "#/definitions/Script"
+      "404":
+        description: "Script not found"
+  /v1/api/chatbot/script/{scriptId}/reply-scripts:
+    get:
+      tags:
+        - "chatbot"
+      summary: "script id로 사용자의 답변 대본들 조회"
+      produces: 
+      - "application/json"
+      parameters:
+      - name : "scriptId"
+        in: "path"
+        description: "대본의 고유 key값"
+        required: true
+        type: "integer"
+      responses:
+        "200":
+          description: "조회 성공"
+          schema:
+            type : "array"
+            items:
+              $ref: "#/definitions/ReplyScript"
+        "404":
+          description: "Script not found"
+    
+    
+definitions:
+  Script:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      chatbot_skill_id:
+        type: "integer"
+      contents:
+        type: "string"
+      depth:
+        type: "integer"
+  ReplyScript:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      type_code:
+        type: "string"
+        enum: 
+          - "choc"
+          - "eval"
+          - "numb"
+          - "sntc"
+          - "taro"
+          - "word"
+      contents:
+        type: "string"
+      prev_chatbot_script_id:
+        type: "integer"
+  SkillReview:
+    type: "object"
+    properties:
+      user_id:
+        type: "integer"
+      rating_code:
+        type: "integer"
+      message:
+        type: "string"

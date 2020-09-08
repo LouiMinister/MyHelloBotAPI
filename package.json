@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "start": "nodemon --exec babel-node app.js",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,21 @@
   },
   "homepage": "https://github.com/LouiMinister/MyHelloBotAPI#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.11.5",
+    "@babel/core": "^7.8.0",
+    "@babel/node": "^7.10.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.10.4",
+    "@babel/plugin-transform-runtime": "^7.10.4",
+    "@babel/polyfill": "^7.10.4",
+    "@babel/preset-env": "^7.8.2",
+    "babel-loader": "^8.0.6",
+    "jest": "^26.1.0",
+    "nodemon": "^2.0.4",
+    "swagger-jsdoc": "^4.0.0",
+    "swagger-ui-express": "^4.1.4"
   }
 }
