@@ -22,7 +22,7 @@ function releaseConnection(conn) {
     }
 }
 
-async function queryExecute(query){
+async function executeQuery(query){
     const connection = await getConnection()
         .catch( (err) => {
             throw err;
@@ -37,4 +37,4 @@ async function queryExecute(query){
     });
     return promise;
 }
-export default queryExecute;
+export default executeQuery;
