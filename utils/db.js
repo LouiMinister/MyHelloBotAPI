@@ -15,4 +15,26 @@ async function getConnection() {
     });
     return promise;
 }
-export default getConnection;
+
+function releaseConnection(conn) {
+    if (pool._freeConnections.indexOf(conn) === -1){
+        conn.release();
+    }
+}
+
+async function executeQuery(query){
+    const connection = await getConnection()
+        .catch( (err) => {
+            throw err;
+        });
+    const promise = new Promise( (resolve, reject) => {
+        connection.query( query, (err, rows) => {
+            err ? reject(err) : resolve(rows);
+        });
+        releaseConnection(connection);
+    }).catch( (err) => {
+        throw err;
+    });
+    return promise;
+}
+export default executeQuery;
